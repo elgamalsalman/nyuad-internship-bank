@@ -1,0 +1,27 @@
+{
+  "name": "nyuad-internship-bank",
+  "version": "1.0.0",
+  "description": "This is an internship applications sharing interface, that is intended to be used by NYUAD (New York University in Abu Dhabi) students to collaboratively share internship applications information, the list of which is managed and maintained by a centralised server",
+  "main": "server.js",
+	"type": "module",
+  "scripts": {
+		"start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elgamalsalman/nyuad-internship-bank.git"
+  },
+  "author": "Salman El Gamal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elgamalsalman/nyuad-internship-bank/issues"
+  },
+  "homepage": "https://github.com/elgamalsalman/nyuad-internship-bank#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
