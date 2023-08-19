@@ -6,11 +6,9 @@ import path from "path";
 // npm packages imports
 import express from "express";
 
-// my imports
-import {
-	get_sheet_from_netid,
-	create_sheet_for_netid,
-} from "./controllers/sheets_manager.js";
+// local imports
+import pages_router from "routes/pages_routes.js"
+import api_router from "routes/api_routes.js"
 
 // --- globals ---
 
@@ -20,42 +18,39 @@ const port = 3000;
 
 // --- middleware ---
 
-// parse 
+// parse request
 app.use(express.urlencoded({extended: "false"}));
 app.use(express.json());
 
-// serve the public folder for statically served webpages
-app.use("/", express.static(path.join(process.cwd(), "public")));
-
 // --- routes ---
 
-// home page
+// pages route
+app.use("/pages", page_router);
+
+// api route
+app.use("/api", api_router);
+
+// default route
 app.get("/", (request, response, next) => {
-	response.sendFile(path.join(process.cwd(), "views", "home.html"));
-});
-
-// join form submissions
-app.post("/join", async (request, response, next) => {
-	// get form information
-	console.log(request.body);
-	const { netid } = request.body;
-
-	// create google sheet for net_id
-	let sheet = await get_sheet_from_netid(netid);
-
-	// create sheet if it doesn't exist
-	if (sheet === null) {
-		console.log(`Creating sheet for ${netid}`)
-		sheet = await create_sheet_for_netid(netid);
-	}
-
-	// redirect to home page
-	response.redirect("/");
+	response.redirect("/pages")
 });
 
 // 404
 app.use("/", (request, response, next) => {
-	response.sendFile(path.join(process.cwd(), "views", "404.html"));
+	// respond with html page
+  if (request.accepts('html')) {
+		response.redirect("/pages/404")
+    return;
+  }
+
+  // respond with json
+  if (request.accepts('json')) {
+    response.json({ error: 'not found' });
+    return;
+  }
+
+  // default to plain-text
+  response.type('txt').send('not found');
 });
 
 // --- server power up ---

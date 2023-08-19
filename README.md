@@ -1,4 +1,4 @@
-# NYUAD Internships Bank
+# NYUAD Internship Bank
 
 ### Description
 
