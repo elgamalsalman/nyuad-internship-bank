@@ -7,14 +7,14 @@ import path from "path";
 import express from "express";
 
 // local imports
-import pages_router from "routes/pages_routes.js"
-import api_router from "routes/api_routes.js"
+import "dotenv/config";
+import pages_router from "./routes/pages_routes.js";
+import api_router from "./routes/api_routes.js";
 
 // --- globals ---
 
 // constants
 const app = express();
-const port = 3000;
 
 // --- middleware ---
 
@@ -25,7 +25,7 @@ app.use(express.json());
 // --- routes ---
 
 // pages route
-app.use("/pages", page_router);
+app.use("/pages", pages_router);
 
 // api route
 app.use("/api", api_router);
@@ -36,7 +36,7 @@ app.get("/", (request, response, next) => {
 });
 
 // 404
-app.use("/", (request, response, next) => {
+app.use("/page", (request, response, next) => {
 	// respond with html page
   if (request.accepts('html')) {
 		response.redirect("/pages/404")
@@ -56,6 +56,6 @@ app.use("/", (request, response, next) => {
 // --- server power up ---
 
 // listen for requests
-app.listen(port, () => {
-	console.log(`Server listening on port ${port}`);
+app.listen(process.env.port, () => {
+	console.log(`Server listening on port ${process.env.port}`);
 });

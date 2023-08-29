@@ -17,8 +17,8 @@
 	<nav>
 		<ul>
 			<li><a href="/">NYUAD Internship Bank</a></li>
-			<li><a href="/about">About</a></li>
-			<li><a href="/contact">Contact us</a></li>
+			<li><a href="/pages/about">About</a></li>
+			<li><a href="/pages/contact">Contact us</a></li>
 		</ul>
 	</nav>
 
@@ -30,10 +30,10 @@
 		<div class="m-4">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<form action="/join" method="POST">
+					<form action="" id="register-form">
 						<div class="mb-3">
 							<label for="netid-reg" class="form-label">NetID</label>
-							<input type="text" class="form-control" id="netid-reg" name="netid" />
+							<input type="text" class="form-control" id="register-form-netid" name="netid" />
 						</div>
 
 						<button type="submit" class="btn btn-primary">Submit</button>
@@ -43,8 +43,8 @@
 		</div>
 	</main>
 
-	<!--
-		<script type="module" src="js/404.js"></script>
-	-->
+	<!-- scripts -->
+	<script type="module" src="js/config.js"></script>
+	<script type="module" src="js/home/register.js"></script>
 </body>
 </html>
