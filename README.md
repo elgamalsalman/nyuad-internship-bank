@@ -1,4 +1,4 @@
-# NYUAD Internship Bank
+# NYUAD Internship Bank &nbsp; ![Image of Version](https://img.shields.io/badge/version-v1.0-green) ![Image of Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)
 
 ### Description
 
