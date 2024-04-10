@@ -2,7 +2,7 @@
 
 // local imports
 import "dotenv/config";
-import users_model from "../models/users_model";
+import users_model from "../models/users_model.js";
 import google_sheets_utils from '../utils/google_sheets_utils.js'
 
 // --- controllers ---

@@ -1,7 +1,7 @@
 // --- imports ---
 
 // npm packages imports
-import fs from "fs";
+import { promises as fs } from 'fs';
 import path from "path";
 
 // npm packages imports
@@ -18,13 +18,13 @@ const scopes = [
 	"https://www.googleapis.com/auth/spreadsheets",
 ];
 
-const token_path = path.join(process.cwd(), 'token.json');
-const credentials_path = path.join(process.cwd(), 'google_credentials.json');
+const token_path = path.join(process.cwd(), 'utils', 'token.json');
+const credentials_path = path.join(process.cwd(), 'utils', 'google_credentials.json');
 
 // --- main program ---
 
 // authorize connection with google apis and get authentication client
-const auth_client = (async authorize() => {
+const auth_client = (async () => {
 	// Reads previously authorized credentials from the save file
 	async function load_saved_credentials_if_exist() {
 		try {
@@ -67,7 +67,7 @@ const auth_client = (async authorize() => {
 // --- helper functions ---
 
 // Lists the names and IDs of up to 10 files.
-async list_files = () => {
+const list_files = async () => {
 	// wait for authentication
 	await auth_client;
 
@@ -94,12 +94,23 @@ async list_files = () => {
 };
 
 // TODO: duplicate_sheet()
+const duplicate_sheet = async (sheet) => {
+	console.log(`Duplicating sheet ${sheet}`);
+};
 
 // TODO: share_sheet_with_email()
+const share_sheet_with_email = async (sheet, email) => {
+	console.log(`sharing sheet ${sheet} with ${email}`);
+};
+
+// --- testing ---
+
+list_files();
 
 // --- exports ---
 
 export default {
+	list_files,
 	duplicate_sheet,
 	share_sheet_with_email,
 };
